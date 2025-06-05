@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 from django.conf.global_settings import LOGIN_REDIRECT_URL
 
@@ -29,6 +30,13 @@ SECRET_KEY = 'django-insecure-)*7*ot#1s7un6zraa7^4jq2b%@(zty2&!p&^5pjv8&e1+m8d1x
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # Application definition
