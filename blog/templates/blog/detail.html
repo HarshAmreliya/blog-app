@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% block title %} {{post.title}} {% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
@@ -13,7 +14,7 @@
                 </a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
     </p>
-    <p>{{post.content | linebreaks}}</p>
+    <p>{{post.content | markdown}}</p>
     <p>
         <a href="{% url "post_share" post.id %}">
             Share this post

@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% block content %}
     {% if tag %}
     <h2>Posts tagged with "{{ tag.name }}"</h2>
@@ -19,7 +20,7 @@
               </p>
             </div>
             <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <p class="article-content">{{ post.content |markdown|truncatewords_html:30 }}</p>
           </div>
         </article>
     {% endfor %}
